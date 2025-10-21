@@ -7,7 +7,7 @@
       "Bash(find:*)",
       "Bash(cat:*)",
       "Bash(grep:*)",
-      "Bash(pnpm:*)",
+      "Bash(npm:*)",
       "Bash(git:*)",
       "WebSearch",
       "mcp__ide__getDiagnostics",

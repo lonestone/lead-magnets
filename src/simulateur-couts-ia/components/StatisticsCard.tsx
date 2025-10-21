@@ -2,6 +2,7 @@ import React from 'react'
 import { Info } from 'lucide-react'
 import { Calculations, ModelData } from '../types'
 import { providers } from '../models'
+import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card'
 
 interface StatisticsCardProps {
   calculations: Calculations
@@ -13,13 +14,14 @@ export const StatisticsCard: React.FC<StatisticsCardProps> = ({
   selectedModel,
 }) => {
   return (
-    <div className="bg-gray-50 p-6 rounded-lg">
-      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-        <Info className="w-5 h-5" />
-        Statistiques
-      </h3>
-
-      <div className="space-y-2 text-sm">
+    <Card className="bg-gray-50">
+      <CardHeader>
+        <CardTitle className="text-lg flex items-center gap-2">
+          <Info className="w-5 h-5" />
+          Statistiques
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-2 text-sm">
         <div className="flex justify-between">
           <span>Modèle:</span>
           <span className="font-medium">{selectedModel.name}</span>
@@ -62,7 +64,7 @@ export const StatisticsCard: React.FC<StatisticsCardProps> = ({
           <span>Prix sortie:</span>
           <span className="font-medium">${selectedModel.outputPrice}/MTok</span>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   )
 }

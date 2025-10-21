@@ -2,6 +2,7 @@ import React from 'react'
 import { ExternalLink } from 'lucide-react'
 import { Calculations, ModelData } from '../types'
 import { providers } from '../models'
+import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card'
 
 interface CostDetailsCardProps {
   calculations: Calculations
@@ -13,21 +14,23 @@ export const CostDetailsCard: React.FC<CostDetailsCardProps> = ({
   selectedModel,
 }) => {
   return (
-    <div className="bg-gray-50 p-6 rounded-lg">
-      <div className="flex justify-between items-center mb-4">
-        <h3 className="text-lg font-semibold">Détail des coûts</h3>
-        <a
-          href={providers[selectedModel.provider].pricingUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 text-blue-800 hover:text-blue-600 text-sm"
-        >
-          <ExternalLink className="w-4 h-4" />
-          Tarifs de {providers[selectedModel.provider].name}
-        </a>
-      </div>
+    <Card className="bg-gray-50">
+      <CardHeader>
+        <div className="flex justify-between items-center">
+          <CardTitle className="text-lg">Détail des coûts</CardTitle>
+          <a
+            href={providers[selectedModel.provider].pricingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-blue-800 hover:text-blue-600 text-sm"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Tarifs de {providers[selectedModel.provider].name}
+          </a>
+        </div>
+      </CardHeader>
 
-      <div className="space-y-3">
+      <CardContent className="space-y-3">
         <div className="flex justify-between items-center">
           <span className="text-gray-700">Tokens d'entrée:</span>
           <span className="font-semibold">
@@ -48,7 +51,7 @@ export const CostDetailsCard: React.FC<CostDetailsCardProps> = ({
           <span>Total:</span>
           <span>${calculations.totalCost.toFixed(2)}</span>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   )
 }
