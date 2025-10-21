@@ -28,7 +28,7 @@ export const providers = {
     name: 'Mistral',
     pricingUrl: 'https://mistral.ai/pricing#api-pricing',
   },
-} as const
+} as const satisfies Record<string, Provider>
 
 export const models: Record<string, Model> = {
   // OpenAI GPT

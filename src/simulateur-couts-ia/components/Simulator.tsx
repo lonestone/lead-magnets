@@ -16,7 +16,7 @@ const AICostSimulator = () => {
     injectedDataTokens: 1000,
     averageResponseTokens: 800,
     useTools: false,
-    llmCallsPerRequest: 1,
+    llmCallsPerRequest: 2,
   })
 
   const selectedModel = models[config.model]

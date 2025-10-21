@@ -1,9 +1,10 @@
 import { useMemo } from 'react'
-import { SimulatorConfig, Calculations, ModelData } from '../types'
+import { SimulatorConfig, Calculations } from '../types'
+import { Model } from '../models'
 
 export const useCalculations = (
   config: SimulatorConfig,
-  selectedModel: ModelData
+  selectedModel: Model
 ): Calculations => {
   return useMemo(() => {
     const totalRequestsPerDay = config.users * config.requestsPerUserPerDay
@@ -17,11 +18,11 @@ export const useCalculations = (
     // Ajout des tokens pour les tools
     if (config.useTools) {
       inputTokensPerRequest += selectedModel.toolTokens
-    }
 
-    // Multiplication par le nombre d'appels LLM
-    inputTokensPerRequest *= config.llmCallsPerRequest
-    outputTokensPerRequest *= config.llmCallsPerRequest
+      // Multiplication par le nombre d'appels LLM
+      inputTokensPerRequest *= config.llmCallsPerRequest
+      outputTokensPerRequest *= config.llmCallsPerRequest
+    }
 
     // Tokens totaux par mois
     const totalInputTokensPerMonth =

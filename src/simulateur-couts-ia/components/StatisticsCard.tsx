@@ -1,12 +1,12 @@
 import React from 'react'
 import { Info } from 'lucide-react'
-import { Calculations, ModelData } from '../types'
-import { providers } from '../models'
+import { Calculations } from '../types'
+import { Model, providers } from '../models'
 import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card'
 
 interface StatisticsCardProps {
   calculations: Calculations
-  selectedModel: ModelData
+  selectedModel: Model
 }
 
 export const StatisticsCard: React.FC<StatisticsCardProps> = ({
@@ -22,18 +22,6 @@ export const StatisticsCard: React.FC<StatisticsCardProps> = ({
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-2 text-sm">
-        <div className="flex justify-between">
-          <span>Modèle:</span>
-          <span className="font-medium">{selectedModel.name}</span>
-        </div>
-
-        <div className="flex justify-between">
-          <span>Provider:</span>
-          <span className="font-medium">
-            {providers[selectedModel.provider].name}
-          </span>
-        </div>
-
         <div className="flex justify-between">
           <span>Requêtes/mois:</span>
           <span className="font-medium">

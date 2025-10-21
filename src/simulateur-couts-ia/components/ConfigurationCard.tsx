@@ -5,13 +5,7 @@ import { models, providers } from '../models'
 import { Card } from '@/ui/card'
 import { Input } from '@/ui/input'
 import { Combobox } from '@/ui/combobox'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/ui/select'
+import { Switch } from '@/ui/switch'
 
 interface ConfigurationCardProps {
   config: SimulatorConfig
@@ -67,7 +61,7 @@ export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               <MessageSquare className="w-4 h-4 inline mr-1" />
-              Requêtes/jour/utilisateur
+              Requêtes / jour / utilisateur
             </label>
             <Input
               type="number"
@@ -127,42 +121,40 @@ export const ConfigurationCard: React.FC<ConfigurationCardProps> = ({
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              <Zap className="w-4 h-4 inline mr-1" />
-              Utiliser les Tools
-            </label>
-            <Select
-              value={config.useTools ? 'true' : 'false'}
-              onValueChange={(value) =>
-                onConfigChange('useTools', value === 'true')
-              }
+        <div className="grid grid-cols-2 gap-4 items-start">
+          <div className="flex items-center gap-3">
+            <Switch
+              id="use-tools"
+              checked={config.useTools}
+              onCheckedChange={(checked) => onConfigChange('useTools', checked)}
+            />
+            <label
+              htmlFor="use-tools"
+              className="text-sm font-medium text-gray-700"
             >
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="false">Non</SelectItem>
-                <SelectItem value="true">Oui</SelectItem>
-              </SelectContent>
-            </Select>
+              Utiliser des Tools
+            </label>
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Appels LLM/requête
-            </label>
-            <Input
-              type="number"
-              min="1"
-              value={config.llmCallsPerRequest}
-              step={1}
-              onChange={(e) =>
-                onConfigChange('llmCallsPerRequest', parseInt(e.target.value))
-              }
-            />
-          </div>
+          {config.useTools && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Appels LLM/requête
+              </label>
+              <Input
+                type="number"
+                min="1"
+                value={config.llmCallsPerRequest}
+                step={0.1}
+                onChange={(e) =>
+                  onConfigChange(
+                    'llmCallsPerRequest',
+                    parseFloat(e.target.value)
+                  )
+                }
+              />
+            </div>
+          )}
         </div>
       </div>
     </Card>

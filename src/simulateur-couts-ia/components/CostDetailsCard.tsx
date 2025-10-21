@@ -1,12 +1,12 @@
 import React from 'react'
 import { ExternalLink } from 'lucide-react'
-import { Calculations, ModelData } from '../types'
-import { providers } from '../models'
+import { Calculations } from '../types'
+import { Model, providers } from '../models'
 import { Card, CardHeader, CardTitle, CardContent } from '@/ui/card'
 
 interface CostDetailsCardProps {
   calculations: Calculations
-  selectedModel: ModelData
+  selectedModel: Model
 }
 
 export const CostDetailsCard: React.FC<CostDetailsCardProps> = ({

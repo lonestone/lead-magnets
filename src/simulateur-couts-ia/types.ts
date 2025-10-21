@@ -19,11 +19,3 @@ export interface Calculations {
   costPerUser: number
   costPerRequest: number
 }
-
-export interface ModelData {
-  name: string
-  provider: string
-  inputPrice: number
-  outputPrice: number
-  toolTokens: number
-}
