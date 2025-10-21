@@ -1,6 +1,13 @@
 import React, { useState, useMemo } from 'react'
-import { Users, MessageSquare, Zap, DollarSign, Info } from 'lucide-react'
-import { models } from './models'
+import {
+  Users,
+  MessageSquare,
+  Zap,
+  DollarSign,
+  Info,
+  ExternalLink,
+} from 'lucide-react'
+import { models, providers } from './models'
 
 const AICostSimulator = () => {
   const [config, setConfig] = useState({
@@ -273,7 +280,18 @@ const AICostSimulator = () => {
 
         {/* Détail des coûts */}
         <div className="bg-gray-50 p-6 rounded-lg">
-          <h3 className="text-lg font-semibold mb-4">Détail des coûts</h3>
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold">Détail des coûts</h3>
+            <a
+              href={providers[selectedModel.provider].pricingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-blue-800 hover:text-blue-600 text-sm"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Tarifs de {providers[selectedModel.provider].name}
+            </a>
+          </div>
 
           <div className="space-y-3">
             <div className="flex justify-between items-center">
@@ -314,7 +332,9 @@ const AICostSimulator = () => {
 
             <div className="flex justify-between">
               <span>Provider:</span>
-              <span className="font-medium">{selectedModel.provider}</span>
+              <span className="font-medium">
+                {providers[selectedModel.provider].name}
+              </span>
             </div>
 
             <div className="flex justify-between">
