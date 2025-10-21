@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+@layer base {
+  body {
+    margin: 5px;
+    font-family: sans-serif;
+  }
+
+  input,
+  select,
+  textarea {
+    background-color: white;
+  }
+}

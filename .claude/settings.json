@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Update(*)",
+      "Bash(mkdir:*)",
+      "Bash(mv:*)",
+      "Bash(find:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(pnpm:*)",
+      "Bash(git:*)",
+      "WebSearch",
+      "mcp__ide__getDiagnostics",
+      "mcp__shadcn__getComponents",
+      "mcp__shadcn__getComponent"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  }
+}
